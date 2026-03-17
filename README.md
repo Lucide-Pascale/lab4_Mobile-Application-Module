@@ -7,11 +7,11 @@ Lab 4 assigment in Mobile Application module
 
 ### Screenshots
 
-<img src="hello_web/screenshots/Homescreen.png" height="400"/>
-<img src="hello_web/screenshots/createPostScreen.png" width="400"/>
-<img src="hello_web/screenshots/FillinAlert.png" height="400"/>
-<img src="hello_web/screenshots/EditPostScreen.png" height="400"/>
-<img src="hello_web/screenshots/DeletePostAlert.png" height="400"/>
-<img src="hello_web/screenshots/PostDeletedSuccessfully.png" height="400"/>
-<img src="hello_web/screenshots/PostDetailsScreen.png" height="400"/>
+<img src="screenshots/Homescreen.png" height="400"/>
+<img src="screenshots/createPostScreen.png" width="400"/>
+<img src="screenshots/FillinAlert.png" height="400"/>
+<img src="screenshots/EditPostScreen.png" height="400"/>
+<img src="screenshots/DeletePostAlert.png" height="400"/>
+<img src="screenshots/PostDeletedSuccessfully.png" height="400"/>
+<img src="screenshots/PostDetailsScreen.png" height="400"/>
 
