@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../models/post.dart';
 import '../services/post_api_service.dart';
+import '../theme/app_colors.dart';
 import 'edit_post_screen.dart';
 
 class PostDetailsScreen extends StatefulWidget {
@@ -55,7 +56,7 @@ class _PostDetailsScreenState extends State<PostDetailsScreen> {
             },
             child: const Text(
               'Delete',
-              style: TextStyle(color: Colors.red),
+              style: TextStyle(color: AppColors.primaryRed),
             ),
           ),
         ],
@@ -74,7 +75,7 @@ class _PostDetailsScreenState extends State<PostDetailsScreen> {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Text('Post deleted successfully'),
-          backgroundColor: Colors.green,
+          backgroundColor: AppColors.primaryRed,
         ),
       );
       Navigator.pop(context, true); // Return true to indicate deletion
@@ -83,7 +84,7 @@ class _PostDetailsScreenState extends State<PostDetailsScreen> {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text('Error: $e'),
-          backgroundColor: Colors.red,
+          backgroundColor: AppColors.primaryRed,
         ),
       );
       setState(() {
@@ -97,9 +98,6 @@ class _PostDetailsScreenState extends State<PostDetailsScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Post Details'),
-        backgroundColor: Colors.deepPurple,
-        foregroundColor: Colors.white,
-        elevation: 0,
       ),
       body: _isDeleting
           ? const Center(child: CircularProgressIndicator())
@@ -114,6 +112,7 @@ class _PostDetailsScreenState extends State<PostDetailsScreen> {
                     style: const TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
+                      color: AppColors.primaryText,
                     ),
                   ),
                   const SizedBox(height: 16),
@@ -123,19 +122,18 @@ class _PostDetailsScreenState extends State<PostDetailsScreen> {
                     children: [
                       Chip(
                         label: Text('ID: ${_currentPost.id}'),
-                        backgroundColor: Colors.grey[200],
+                        backgroundColor: AppColors.surfaceBg,
                       ),
                       const SizedBox(width: 8),
                       Chip(
                         label: Text('User: ${_currentPost.userId}'),
-                        backgroundColor: Colors.grey[200],
+                        backgroundColor: AppColors.surfaceBg,
                       ),
                     ],
                   ),
                   const SizedBox(height: 20),
 
-                  // Divider
-                  const Divider(),
+                  const Divider(color: AppColors.divider),
                   const SizedBox(height: 16),
 
                   // Body
@@ -144,6 +142,7 @@ class _PostDetailsScreenState extends State<PostDetailsScreen> {
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
+                      color: AppColors.primaryText,
                     ),
                   ),
                   const SizedBox(height: 8),
@@ -152,6 +151,7 @@ class _PostDetailsScreenState extends State<PostDetailsScreen> {
                     style: const TextStyle(
                       fontSize: 16,
                       height: 1.6,
+                      color: AppColors.primaryText,
                     ),
                   ),
                   const SizedBox(height: 32),
@@ -164,11 +164,6 @@ class _PostDetailsScreenState extends State<PostDetailsScreen> {
                           onPressed: _navigateToEdit,
                           icon: const Icon(Icons.edit),
                           label: const Text('Edit'),
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.blue,
-                            foregroundColor: Colors.white,
-                            padding: const EdgeInsets.symmetric(vertical: 12),
-                          ),
                         ),
                       ),
                       const SizedBox(width: 12),
@@ -177,11 +172,6 @@ class _PostDetailsScreenState extends State<PostDetailsScreen> {
                           onPressed: _deletePost,
                           icon: const Icon(Icons.delete),
                           label: const Text('Delete'),
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.red,
-                            foregroundColor: Colors.white,
-                            padding: const EdgeInsets.symmetric(vertical: 12),
-                          ),
                         ),
                       ),
                     ],

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../models/post.dart';
 import '../services/post_api_service.dart';
+import '../theme/app_colors.dart';
 
 class EditPostScreen extends StatefulWidget {
   final Post post;
@@ -38,7 +39,7 @@ class _EditPostScreenState extends State<EditPostScreen> {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Text('Please fill in all fields'),
-          backgroundColor: Colors.orange,
+          backgroundColor: AppColors.warning,
         ),
       );
       return;
@@ -60,7 +61,7 @@ class _EditPostScreenState extends State<EditPostScreen> {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Text('Post updated successfully'),
-          backgroundColor: Colors.green,
+          backgroundColor: AppColors.success,
         ),
       );
 
@@ -71,7 +72,7 @@ class _EditPostScreenState extends State<EditPostScreen> {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text('Error: $e'),
-          backgroundColor: Colors.red,
+          backgroundColor: AppColors.error,
         ),
       );
       setState(() {
@@ -85,9 +86,6 @@ class _EditPostScreenState extends State<EditPostScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Edit Post'),
-        backgroundColor: Colors.deepPurple,
-        foregroundColor: Colors.white,
-        elevation: 0,
       ),
       body: _isLoading
           ? const Center(child: CircularProgressIndicator())
@@ -96,21 +94,23 @@ class _EditPostScreenState extends State<EditPostScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
+                  Text(
                     'Edit Post',
                     style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
+                      color: AppColors.primaryText,
                     ),
                   ),
                   const SizedBox(height: 24),
 
                   // Title Field
-                  const Text(
+                  Text(
                     'Title',
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
+                      color: AppColors.primaryText,
                     ),
                   ),
                   const SizedBox(height: 8),
@@ -128,11 +128,12 @@ class _EditPostScreenState extends State<EditPostScreen> {
                   const SizedBox(height: 20),
 
                   // Body Field
-                  const Text(
+                  Text(
                     'Body',
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
+                      color: AppColors.primaryText,
                     ),
                   ),
                   const SizedBox(height: 8),
@@ -154,14 +155,6 @@ class _EditPostScreenState extends State<EditPostScreen> {
                     width: double.infinity,
                     child: ElevatedButton(
                       onPressed: _submitUpdate,
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.deepPurple,
-                        foregroundColor: Colors.white,
-                        padding: const EdgeInsets.symmetric(vertical: 14),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                      ),
                       child: const Text(
                         'Save Changes',
                         style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),

@@ -11,7 +11,6 @@ class Post {
     required this.body,
   });
 
-  // Factory constructor to create a Post from JSON
   factory Post.fromJson(Map<String, dynamic> json) {
     return Post(
       id: json['id'] as int,
@@ -21,7 +20,7 @@ class Post {
     );
   }
 
-  // Convert a Post to JSON
+  
   Map<String, dynamic> toJson() {
     return {
       'id': id,
@@ -31,7 +30,7 @@ class Post {
     };
   }
 
-  // Create a copy of Post with modified fields
+  
   Post copyWith({
     int? id,
     int? userId,

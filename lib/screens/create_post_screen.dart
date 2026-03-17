@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../services/post_api_service.dart';
+import '../theme/app_colors.dart';
 
 class CreatePostScreen extends StatefulWidget {
   const CreatePostScreen({super.key});
@@ -35,7 +36,7 @@ class _CreatePostScreenState extends State<CreatePostScreen> {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Text('Please fill in all fields'),
-          backgroundColor: Colors.orange,
+          backgroundColor: AppColors.warning,
         ),
       );
       return;
@@ -56,7 +57,7 @@ class _CreatePostScreenState extends State<CreatePostScreen> {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Text('Post created successfully'),
-          backgroundColor: Colors.green,
+          backgroundColor: AppColors.success,
         ),
       );
 
@@ -67,7 +68,7 @@ class _CreatePostScreenState extends State<CreatePostScreen> {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text('Error: $e'),
-          backgroundColor: Colors.red,
+          backgroundColor: AppColors.error,
         ),
       );
       setState(() {
@@ -81,9 +82,6 @@ class _CreatePostScreenState extends State<CreatePostScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Create Post'),
-        backgroundColor: Colors.deepPurple,
-        foregroundColor: Colors.white,
-        elevation: 0,
       ),
       body: _isLoading
           ? const Center(child: CircularProgressIndicator())
@@ -97,6 +95,7 @@ class _CreatePostScreenState extends State<CreatePostScreen> {
                     style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
+                      color: AppColors.primaryText,
                     ),
                   ),
                   const SizedBox(height: 24),
@@ -107,18 +106,12 @@ class _CreatePostScreenState extends State<CreatePostScreen> {
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
+                      color: AppColors.primaryText,
                     ),
                   ),
                   const SizedBox(height: 8),
                   TextField(
                     controller: _titleController,
-                    decoration: InputDecoration(
-                      hintText: 'Enter post title',
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      contentPadding: const EdgeInsets.all(12),
-                    ),
                     maxLines: 1,
                   ),
                   const SizedBox(height: 20),
@@ -129,18 +122,12 @@ class _CreatePostScreenState extends State<CreatePostScreen> {
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
+                      color: AppColors.primaryText,
                     ),
                   ),
                   const SizedBox(height: 8),
                   TextField(
                     controller: _bodyController,
-                    decoration: InputDecoration(
-                      hintText: 'Enter post content',
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      contentPadding: const EdgeInsets.all(12),
-                    ),
                     maxLines: 8,
                   ),
                   const SizedBox(height: 24),
@@ -150,14 +137,6 @@ class _CreatePostScreenState extends State<CreatePostScreen> {
                     width: double.infinity,
                     child: ElevatedButton(
                       onPressed: _submitPost,
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.deepPurple,
-                        foregroundColor: Colors.white,
-                        padding: const EdgeInsets.symmetric(vertical: 14),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                      ),
                       child: const Text(
                         'Create Post',
                         style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
